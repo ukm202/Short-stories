@@ -15,7 +15,7 @@ const app = express();
 
 // connect to MongoDB database
 
-const db_URI = 'mongodb+srv://uttam001:Tripu001@stories.yagpb.mongodb.net/Stories?retryWrites=true&w=majority';
+const db_URI = 'mongodb+srv://<user name>:<password>@stories.yagpb.mongodb.net/Stories?retryWrites=true&w=majority';
 
 
 mongoose.connect(db_URI, { useNewUrlParser: true, useUnifiedTopology: true})
