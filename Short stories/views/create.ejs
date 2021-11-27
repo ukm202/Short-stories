@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs')  %> 
+
+<body>
+    <%- include('./partials/nav.ejs')  %>
+    <div class="create-story content">
+        <form action="/stories" method="post">
+            <label for="title">Story title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="snippet">Story snippet:</label>
+            <input type="text" id="snippet" name="snippet" required>
+            <label for="body">Story body:</label>
+            <textarea type="text" id="body" name="body" required></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+    <%- include('./partials/footer.ejs') %> 
+
+    
+</body>
+</html>

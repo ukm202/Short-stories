@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs')  %> 
+
+<body>
+   <%- include('./partials/nav.ejs')  %> 
+    <div class="stories content">
+        <h2>All stories <% if(stories.length > 0) { %>
+           | <%= stories.length %> <% } %> </h2>
+        
+        
+        <% if(stories.length > 0){ %>
+            
+            <%
+            stories.forEach(story=>{ %>
+            <a class="single" href="/stories/<%= story._id %>  ">
+                
+                <h3>
+                    <%= story.title %>
+                </h3>
+            </a>
+                <p>
+                    <%= story.snippet %>
+
+                </p>
+            
+
+            <%})
+        } else{%>
+            <h3 style="color: rgb(38, 156, 74)">No stories to display...</h3>
+
+        <% } %>
+
+    </div>
+    <%- include('./partials/footer.ejs') %> 
+
+    
+</body>
+</html>

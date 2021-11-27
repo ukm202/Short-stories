@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- 
+    include('./partials/head.ejs')
+    
+    
+%> 
+
+<body>
+    <%- include('./partials/nav.ejs')  %>
+    <div class="details content">
+        <h2 style="margin-bottom: 0;"><%= story.title %> </h2>
+        <h5 style="margin-top: 10px; color: rgb(73, 68, 68); opacity: 0.5; margin-left: 20px;"> Created at -  
+        <%= 
+           
+           dateTime.format((new Date(story.createdAt)),'YYYY/MM/DD HH:mm:ss');
+            
+        %></h5>
+        <div class="content">
+            <p> <%= story.body %>  </p>
+        </div>
+        <a data-doc="<%= story.id %> " class="delete" >
+            <div class="tooltip">
+                <img src="/trashcan.svg" alt="delete icon">
+                <span class="tooltiptext">Please don't delete</span>
+            </div>
+            
+        </a>
+    </div>
+    <%- include('./partials/footer.ejs') %> 
+
+    <script>
+        const trashCan = document.querySelector('a.delete');
+        trashCan.addEventListener('click', (e)=>{
+            const endpoint = `/stories/${trashCan.dataset.doc}`;
+            fetch(endpoint,{
+                method: 'DELETE'
+            })
+            .then((response)=>response.json())
+            .then((data)=>window.location.href = data.redirect)
+
+            .catch((err)=>{
+                console.log(err);
+            });
+        });
+    </script>
+
+    
+</body>
+</html>
